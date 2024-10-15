@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from ...models.User import User
+from ...models.User import Role, User
 from django.contrib.auth.hashers import make_password
 import environ 
 env=environ.Env()
@@ -15,7 +15,11 @@ class Command(BaseCommand):
             print("USER ALREADY EXISTS")
         except User.DoesNotExist:
             print("USER NOT EXISTS")
-            save_admin = User.objects.create(mail=admin_mail, password=make_password(admin_pwd))
+            User.objects.create(
+                mail=admin_mail,
+                password=make_password(admin_pwd),
+                role=Role.ADMIN
+            )
         except Exception as e:
             print(str(e))
     
