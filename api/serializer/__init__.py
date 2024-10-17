@@ -1,1 +1,2 @@
 from .UserSerializer import UserSerializer
+from .MessageSerializer import MessageSerializer

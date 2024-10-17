@@ -18,8 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from api.views import *
 from api.views.Auth import admin_view
+from api.views.Message import send
 
 urlpatterns = [
     path('login', login),
-    path('testadmin', admin_view)
+    path('message', send)
 ]
